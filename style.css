@@ -627,6 +627,33 @@ footer {
         text-align: center;
     }
 
+    /* --- CORREÇÃO DO LAYOUT (FILTRO EM CIMA) --- */
+    
+    /* 1. O Container que segura o Filtro e os Produtos */
+    /* Se o seu container principal chama apenas ".container", usamos "main .container" para ser específico e não quebrar o topo */
+    main .container {
+        flex-direction: column !important; /* Obriga a ficar um embaixo do outro */
+        align-items: stretch; /* Estica para ocupar a largura toda */
+    }
+
+    /* 2. A Sidebar (Filtros) */
+    .sidebar-filtros {
+        width: 100% !important; /* Ocupa 100% da tela */
+        max-width: 100% !important; /* Remove limites de largura */
+        margin-bottom: 30px; /* Dá um espaço antes de começar os produtos */
+        padding-right: 0; /* Remove espaço lateral desnecessário no mobile */
+        border-right: none; /* Remove a linha divisória lateral se tiver */
+        border-bottom: 1px solid #eee; /* Adiciona uma linha embaixo para separar */
+        padding-bottom: 20px;
+    }
+
+    /* 3. A Grade de Produtos */
+    .grade-produtos {
+        width: 100% !important;
+        padding-left: 0 !important; /* Remove recuo da esquerda */
+    }
+
+
     /* Ajuste do Logo no celular */
     .logo h1 {
         font-size: 22px; /* Diminui um pouco a logo */
