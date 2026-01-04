@@ -1,0 +1,615 @@
+/* VARIÁVEIS DE COR (Fica fácil mudar depois) */
+:root {
+    --cor-principal: #d48ea1; /* << COLOQUE O CÓDIGO DO SEU ROSA AQUI */
+    --cor-texto: #333;
+    --cor-fundo-claro: #f5f5f5;
+    --cor-cinza-busca: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto);
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px; /* Um pouco mais largo, estilo e-commerce */
+    margin: 0 auto;
+}
+
+/* --- 1. BARRA DE TOPO --- */
+.top-bar {
+    background-color: var(--cor-principal);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    /* Usamos padding em vez de height fixa para centralizar melhor automaticamente */
+    padding: 12px 0; 
+}
+
+/* O container segura tudo */
+.top-bar .container {
+    display: flex;
+    justify-content: center; /* <--- MUDANÇA AQUI: Centraliza tudo no meio da tela */
+    align-items: center;
+    gap: 40px; /* <--- MUDANÇA AQUI: Espaço entre o endereço e o Instagram */
+}
+
+/* --- GRUPOS (Lado Esquerdo e Direito) --- */
+.infos-contato, .redes-sociais {
+    display: flex;
+    gap: 25px; /* Espaço entre o telefone e o endereço */
+    align-items: center; /* Garante alinhamento fino entre ícone e texto */
+}
+
+/* --- ITENS INDIVIDUAIS --- */
+.item-contato, .item-social {
+    display: flex;
+    align-items: center; /* O ícone fica na mesma linha do texto */
+    gap: 8px; /* Espacinho entre o ícone e o texto */
+}
+
+/* Ajustes específicos dos links sociais */
+.item-social {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.item-social:hover {
+    opacity: 0.8;
+}
+
+/* Ajuste fino para os ícones ficarem bonitos */
+.top-bar i {
+    font-size: 14px;
+}
+
+/* --- 2. CABEÇALHO PRINCIPAL --- */
+header {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra bem suave */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espalha Logo, Menu e Busca */
+}
+
+/* Logo */
+.logo h1 {
+    color: var(--cor-principal); /* Rosa */
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--cor-principal);
+}
+
+/* Área da Direita (Busca e Ícones) */
+.acoes-usuario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.barra-busca {
+    padding: 10px 15px;
+    border-radius: 20px; /* Borda redonda estilo "pílula" igual da referência */
+    border: none;
+    background-color: var(--cor-cinza-busca);
+    width: 200px;
+    outline: none;
+}
+
+.icone {
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--cor-texto);
+    position: relative; /* Necessário para a bolinha do carrinho */
+}
+
+/* A bolinha verde do contador do carrinho (igual referência) */
+.carrinho-cont {
+    background-color: var(--cor-principal);
+    color: white;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+}
+
+/* --- LAYOUT DA LOJA (2 Colunas) --- */
+.loja-layout {
+    display: flex;
+    padding: 40px 0;
+    gap: 30px; /* Espaço entre o menu lateral e os produtos */
+    align-items: flex-start; /* Alinha tudo ao topo */
+}
+
+/* --- 1. SIDEBAR (FILTROS) --- */
+.sidebar-filtros {
+    width: 250px; /* Largura fixa da barra lateral */
+    flex-shrink: 0; /* Impede que ela encolha */
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee; /* Borda bem suave */
+}
+
+.grupo-filtro h3 {
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.grupo-filtro h3 i {
+    font-size: 10px;
+    color: #888;
+}
+
+.btn-limpar {
+    width: 100%;
+    background-color: #d48ea1; /* Verde escuro igual ao modelo */
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- 2. GRADE DE PRODUTOS --- */
+.grade-produtos {
+    flex: 1; /* Ocupa todo o resto do espaço */
+    display: grid;
+    /* Cria colunas automáticas de no mínimo 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 30px;
+}
+
+/* O CARD DO PRODUTO */
+.produto-card {
+    background: white;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: 0.3s;
+    /* Borda sutil para separar, se quiser remover igual ao modelo "clean", tire a linha abaixo */
+    border: 1px solid #f5f5f5; 
+}
+
+.produto-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave ao passar o mouse */
+}
+
+.img-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Garante que a foto preencha o quadrado sem esticar */
+    margin-bottom: 15px;
+}
+
+.info-produto h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-size: 18px;
+    color: #d48ea1; /* Verde escuro do preço */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* O BOTÃO DO PRODUTO (Estilo Borda) */
+.btn-produto {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #333; /* Borda fina escura */
+    color: #333;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-produto:hover {
+    background-color: #d48ea1;
+    color: white;
+}
+
+/* --- 3. BOTÃO FLUTUANTE DO WHATSAPP --- */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* Verde oficial do WhatsApp */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Faz ficar redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000; /* Garante que fique por cima de tudo */
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1); /* Aumenta um pouquinho ao passar o mouse */
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+footer {
+    background-color: #f5f5f5; /* Fundo cinza claro igual referência */
+    padding-top: 50px;
+    margin-top: 50px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-content {
+    display: grid;
+    /* Cria 4 colunas de tamanho igual */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+/* Títulos das colunas */
+.footer-col h4 {
+    color: var(--cor-principal); /* Rosa (ou use #0f4d28 se quiser verde igual foto) */
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Links e Listas */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    color: #555; /* Cinza escuro para texto */
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--cor-principal);
+    padding-left: 5px; /* Efeitinho de mover para direita */
+}
+
+/* Ícones Sociais (Coluna 1) */
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a i {
+    font-size: 20px;
+    color: var(--cor-principal); /* Rosa */
+}
+
+/* Estilo especial para o link do Github (Coluna 2) */
+.link-github {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+/* Texto de horário (Coluna 4) */
+.horario-texto {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Lista de contatos com ícones (Coluna 4) */
+.contato-lista li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+.contato-lista i {
+    color: var(--cor-principal);
+    width: 15px; /* Garante alinhamento vertical dos ícones */
+}
+
+/* Botões de Mapa e Waze (Coluna 4) */
+.apps-rota {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.apps-rota a i {
+    font-size: 28px;
+    color: #444; /* Ícones escuros para destacar */
+    transition: 0.3s;
+}
+
+.apps-rota a i:hover {
+    color: #d48ea1; /* Fica rosa (cor de mapa) ao passar o mouse */
+    transform: scale(1.1);
+}
+
+/* Faixa final de Copyright */
+.footer-bottom {
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* RESPONSIVIDADE: Se a tela for pequena (celular), vira 1 coluna só */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* 1 coluna */
+        text-align: center;
+    }
+    
+    .footer-social, .contato-lista li, .apps-rota {
+        justify-content: center; /* Centraliza tudo no mobile */
+    }
+}
+
+/* --- PÁGINA SOBRE NÓS (Centralização Ajustada) --- */
+
+.sobre-layout-flex {
+    display: flex;
+    align-items: center;   /* Alinha verticalmente pelo centro */
+    justify-content: center; /* ALINHA TUDO NO CENTRO HORIZONTALMENTE */
+    gap: 80px;             /* Espaço entre texto e foto */
+    
+    /* AQUI ESTÁ O SEGREDO DO "MAIS AO CENTRO": */
+    max-width: 1100px;     /* Força o bloco a ser mais estreito que o resto do site */
+    margin: 0 auto;        /* Garante que esse bloco fique no meio da tela */
+    padding: 80px 0;
+}
+
+/* Coluna Texto (Esquerda) */
+.coluna-texto-sobre {
+    flex: 1;               /* Ocupa o espaço disponível */
+    max-width: 500px;      /* Limita a largura do texto para não ficar "tripa" */
+}
+
+.frase-principal {
+    font-size: 32px; /* Ajustei levemente para ficar harmônico com o bloco menor */
+    text-transform: uppercase;
+    color: var(--cor-principal);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.texto-informacoes {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify; /* Mantém o bloco de texto quadradinho e organizado */
+}
+
+/* Coluna Carrossel (Direita) */
+.coluna-carrossel-direita {
+    width: 400px;  /* Largura fixa */
+    height: 550px; /* Altura fixa */
+    flex-shrink: 0; 
+    position: relative;
+}
+
+/* O Container do Swiper */
+.swiper-single-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+}
+
+/* A imagem em si */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Setinhas Discretas*/
+.swiper-button-next, .swiper-button-prev {
+    color: #ffffff; /* Cor da seta (Branca) */
+    background: none !important; /* Fundo transparente */
+    box-shadow: none !important; /* Sem sombra */
+    
+    /* Mantemos o tamanho da área de clique para facilitar o toque */
+    width: 50px !important;
+    height: 50px !important;
+}
+
+/* Efeito ao passar o mouse (opcional: aumenta levemente) */
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    transform: scale(1.2); 
+}
+
+/* Responsividade (Celular) */
+@media (max-width: 900px) {
+    .sobre-layout-flex {
+        flex-direction: column; 
+        text-align: center;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+    
+    .coluna-texto-sobre {
+        max-width: 100%; /* No celular pode usar a largura toda */
+    }
+
+    .texto-informacoes {
+        text-align: center; /* No celular fica melhor centralizado */
+    }
+    
+    .coluna-carrossel-direita {
+        width: 100%;
+        max-width: 350px; /* Um pouco menor no celular */
+        height: 450px;
+    }
+}
+
+/* --- SEÇÃO DA ARTESÃ --- */
+
+.secao-artesa {
+    padding-bottom: 80px; /* Espaço antes de chegar no rodapé */
+    max-width: 1140px;    /* Garante que a largura máxima seja a da foto */
+    margin: 0 auto;       /* Centraliza o bloco na tela */
+}
+
+/* Estilo da Foto Grande*/
+.banner-artesa {
+    width: 100%;          /* Tenta ocupar o espaço... */
+    max-width: 900px;     /* <--- AQUI VOCÊ CONTROLA O TAMANHO MÁXIMO */
+    
+    /* Centraliza o bloco na tela e mantém o espaço de 40px embaixo */
+    margin: 0 auto 40px auto; 
+
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.banner-artesa img {
+    width: 100%;
+    height: auto;      /* Mantém a proporção para não distorcer */
+    display: block;
+}
+
+.banner-artesa img {
+    width: 100%;       /* Ocupa a largura total do container */
+    height: auto;      /* Mantém a proporção correta da imagem */
+    display: block;    /* Remove espaços brancos indesejados */
+}
+
+/* Estilo do Texto Abaixo */
+.texto-artesa-conteudo {
+    text-align: center;    /* Centraliza o texto */
+    max-width: 800px;      /* Não deixa a linha de texto ficar muito longa (cansativo de ler) */
+    margin: 0 auto;        /* Centraliza o bloco de texto */
+}
+
+.texto-artesa-conteudo h2 {
+    font-size: 32px;
+    color: var(--cor-principal); /* Rosa */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.texto-artesa-conteudo p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.assinatura {
+    font-family: 'Segoe UI', sans-serif; /* Ou uma fonte cursiva se quiser depois */
+    font-style: italic;
+    color: var(--cor-principal) !important;
+    font-size: 20px !important;
+    margin-top: 10px;
+}
+
+/* --- ESTILO DO ACORDEÃO (Sidebar) --- */
+
+.grupo-filtro h3 {
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    user-select: none; /* Não deixa selecionar o texto ao clicar rápido */
+    /* (Seus estilos anteriores de font-size, color, etc continuam aqui) */
+}
+
+/* O conteúdo começa escondido */
+.filtro-conteudo {
+    display: none;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Quando adicionarmos a classe 'ativo' pelo JS, ele aparece */
+.filtro-conteudo.ativo {
+    display: block; /* Ou display: flex; se preferir coluna */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Animação do ícone + vira - */
+.grupo-filtro h3 i {
+    transition: 0.3s;
+}
+
+.grupo-filtro h3.ativo i {
+    transform: rotate(45deg); /* O + vira um x (ou pode trocar o icone via JS) */
+}
+
+/* Estilo básico dos inputs dentro do menu */
+.filtro-conteudo label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

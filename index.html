@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empório da Mesa Posta</title>
+
+    <link rel="icon" href="imagens/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-bar">
+    <div class="container">
+        
+        <div class="infos-contato">
+            <div class="item-contato">
+                <i class="fa-solid fa-phone"></i> 
+                <span>(19) 99629-0325</span>
+            </div>
+            <div class="item-contato">
+                <i class="fa-solid fa-location-dot"></i> 
+                <span>Campinas - SP</span>
+            </div>
+        </div>
+
+        <div class="redes-sociais">
+            <a href="https://www.instagram.com/emporiodamesaposta/" class="item-social">
+                <i class="fa-brands fa-instagram"></i> 
+                <span>emporiodamesaposta</span>
+            </a>
+            <a href="https://www.facebook.com/ilma.alves.129?locale=pt_BR" class="item-social">
+                <i class="fa-brands fa-facebook-f"></i> 
+                <span>emporiodamesaposta</span>
+            </a>
+        </div>
+
+    </div>
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Empório da Mesa Posta</h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="acoes-usuario">
+                <input type="text" id="busca-topo" placeholder="Pesquisar..." class="barra-busca" oninput="aplicarFiltros()">
+    
+                <a href="#" class="icone">👤</a> 
+                <a href="#" class="icone">🛒<span class="carrinho-cont">0</span></a> 
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container loja-layout">
+            
+        <aside class="sidebar-filtros">
+    
+            <div class="grupo-filtro">
+                <h3 onclick="toggleFiltro(this)">Preço <i class="fa-solid fa-plus"></i></h3>
+                <div class="filtro-conteudo">
+                    <label><input type="radio" name="filtro-preco" value="todos" checked onchange="aplicarFiltros()"> Todos</label>
+                    <label><input type="radio" name="filtro-preco" value="ate-100" onchange="aplicarFiltros()"> Até R$ 100</label>
+                    <label><input type="radio" name="filtro-preco" value="100-plus" onchange="aplicarFiltros()"> Acima de R$ 100</label>
+                </div>
+            </div>
+
+            <div class="grupo-filtro">
+                <h3 onclick="toggleFiltro(this)">Ordenar por <i class="fa-solid fa-plus"></i></h3>
+                <div class="filtro-conteudo">
+                    <select id="select-ordenacao" onchange="aplicarFiltros()" style="width: 100%; padding: 5px;">
+                        <option value="padrao">Relevância</option>
+                        <option value="menor-preco">Menor Preço</option>
+                        <option value="maior-preco">Maior Preço</option>
+                        <option value="a-z">A - Z (Alfabética)</option>
+                        <option value="z-a">Z - A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grupo-filtro">
+                <h3 onclick="toggleFiltro(this)">Categorias <i class="fa-solid fa-plus"></i></h3>
+                <div class="filtro-conteudo">
+                    <label>
+                        <input type="checkbox" name="categoria" value="Toalhas" onchange="aplicarFiltros()"> Toalhas de Mesa
+                    </label>
+                    <label>
+                        <input type="checkbox" name="categoria" value="Panos de Prato" onchange="aplicarFiltros()"> Panos de Prato
+                    </label>
+                    <label>
+                        <input type="checkbox" name="categoria" value="Panos de Copa" onchange="aplicarFiltros()"> Panos de Copa
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-limpar" onclick="limparFiltros()">LIMPAR</button>
+        </aside>
+
+        <section class="grade-produtos" id="grade-produtos">
+        </section>        
+
+        </div>
+    </main>
+
+    <a href="https://wa.me/5519996290325" class="btn-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container footer-content">
+            
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                    <li><a href="https://www.nuvemshop.com.br/termos-de-uso">Política de Privacidade</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://wa.me/5519996290325"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/emporiodamesaposta/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/ilma.alves.129?locale=pt_BR"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Mais Informações</h4>
+                <ul>
+                    <li><a href="https://wa.me/5519996290325">Fale Conosco</a></li>
+                    <li><a href="https://wa.me/5519996290325">Trocas e Devoluções</a></li>
+                    <li>
+                        <a href="https://github.com/CelsoJr19" class="link-github">
+                            Dúvidas sobre o site <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>ONDE ME ENCONTRAR:</h4>
+                <div class="mapa-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124555.82754687185!2d-47.096312215755326!3d-22.870531808662225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c61de74b6325%3A0x17e53a6a2178c22a!2sCampinas%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1767475474737!5m2!1spt-BR!2sbr" 
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Fale Conosco</h4>
+                <p class="horario-texto">
+                    Nossos horários de funcionamento são de segunda à sexta-feira, das 10:00 às 18:30, e aos sábados das 10:00 às 14:00, exceto feriados.
+                </p>
+                
+                <ul class="contato-lista">
+                    <li><i class="fa-brands fa-whatsapp"></i> (19) 99629-0325</li>
+                    <li><i class="fa-solid fa-phone"></i> (19) 99629-0325</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Av. Capitão Olinto Mancini, 123</li>
+                    <li><i class="fa-solid fa-envelope"></i> emporiodamesaposta@gmail.com.com</li>
+                </ul>
+
+                <div class="apps-rota">
+                    <a href="#" title="Abrir no Google Maps"><i class="fa-solid fa-map-location-dot"></i></a>
+                    <a href="#" title="Abrir no Waze"><i class="fa-brands fa-waze"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Empório da Mesa Posta. Todos os direitos reservados | Powered By Celso Jr.</p>
+        </div>
+    </footer>
+
+    <script>
+    // 1. BANCO DE DADOS
+    const produtos = [
+        { id: 1, nome: "Jogo Americano terracota", categoria: "Panos de Prato", preco: 120.90, imagem: "imagens/terracota.jpg" },
+        { id: 2, nome: "Pano de Prato personalizado", categoria: "Panos de Prato", preco: 35.00, imagem: "imagens/panodeprato.jpg" },
+        { id: 3, nome: "Pano de prato rústico xadrez preto e branco", categoria: "Panos de Prato", preco: 35.00, imagem: "imagens/panoxadrez.jpg" },
+        { id: 4, nome: "Toalha Xadrez Vermelha", categoria: "Toalhas", preco: 89.90, imagem: "imagens/logo.jpg" },
+        { id: 5, nome: "Kit Semanal 7 Panos", categoria: "Panos de Prato", preco: 99.00, imagem: "imagens/logo.jpg" },
+        { id: 6, nome: "Caminho de Mesa Rústico", categoria: "Toalhas", preco: 65.50, imagem: "imagens/logo.jpg" }
+    ];
+
+    // 2. FUNÇÃO VISUAL: ABRE E FECHA O MENU (Sanfona)
+    function toggleFiltro(elementoH3) {
+        // Acha a div de conteúdo que está logo depois do H3 clicado
+        const conteudo = elementoH3.nextElementSibling;
+        
+        // Liga/Desliga a classe 'ativo' no conteúdo e no título (para girar o ícone)
+        conteudo.classList.toggle('ativo');
+        elementoH3.classList.toggle('ativo');
+        
+        // Troca o ícone de + para - (Opcional, se quiser ser bem detalhista)
+        const icone = elementoH3.querySelector('i');
+        if (elementoH3.classList.contains('ativo')) {
+            icone.classList.remove('fa-plus');
+            icone.classList.add('fa-minus');
+        } else {
+            icone.classList.remove('fa-minus');
+            icone.classList.add('fa-plus');
+        }
+    }
+
+    // 3. RENDERIZAR NA TELA
+    function renderizarProdutos(lista) {
+        const grade = document.getElementById('grade-produtos');
+        grade.innerHTML = ''; 
+
+        if (lista.length === 0) {
+            grade.innerHTML = '<p style="width:100%; text-align:center; padding:20px;">Nenhum produto encontrado.</p>';
+            return;
+        }
+
+        lista.forEach(produto => {
+            const html = `
+                <div class="produto-card">
+                    <div class="img-container">
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                    </div>
+                    <div class="info-produto">
+                        <h3>${produto.nome}</h3>
+                        <p class="preco">R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
+                        <a href="#" class="btn-produto">VER DETALHES</a>
+                    </div>
+                </div>
+            `;
+            grade.innerHTML += html;
+        });
+    }
+
+    // 4. LÓGICA DE FILTRAGEM
+    function aplicarFiltros() {
+        // A. Busca lá do TOPO (Header)
+        const termoBusca = document.getElementById('busca-topo').value.toLowerCase();
+        
+        // B. Ordenação e Categorias (Sidebar)
+        const ordenacao = document.getElementById('select-ordenacao').value;
+        const checkboxes = document.querySelectorAll('input[name="categoria"]:checked');
+        const categoriasSelecionadas = Array.from(checkboxes).map(cb => cb.value);
+        
+        // C. Filtro de Preço (Radio Buttons)
+        const filtroPreco = document.querySelector('input[name="filtro-preco"]:checked').value;
+
+        // FILTRANDO...
+        let listaFiltrada = produtos.filter(produto => {
+            const matchNome = produto.nome.toLowerCase().includes(termoBusca);
+            const matchCategoria = categoriasSelecionadas.length === 0 || categoriasSelecionadas.includes(produto.categoria);
+            
+            let matchPreco = true;
+            if (filtroPreco === 'ate-100') matchPreco = produto.preco <= 100;
+            if (filtroPreco === '100-plus') matchPreco = produto.preco > 100;
+
+            return matchNome && matchCategoria && matchPreco;
+        });
+
+        // ORDENANDO...
+        if (ordenacao === 'menor-preco') {
+            listaFiltrada.sort((a, b) => a.preco - b.preco);
+        } else if (ordenacao === 'maior-preco') {
+            listaFiltrada.sort((a, b) => b.preco - a.preco);
+        } else if (ordenacao === 'a-z') {
+            listaFiltrada.sort((a, b) => a.nome.localeCompare(b.nome));
+        } else if (ordenacao === 'z-a') {
+            listaFiltrada.sort((a, b) => b.nome.localeCompare(a.nome));
+        }
+
+        renderizarProdutos(listaFiltrada);
+    }
+
+    // 5. LIMPAR TUDO
+    function limparFiltros() {
+        document.getElementById('busca-topo').value = ''; // Limpa topo
+        document.getElementById('select-ordenacao').value = 'padrao'; // Reseta ordem
+        // Reseta checkboxes e radios
+        document.querySelectorAll('input[name="categoria"]').forEach(cb => cb.checked = false);
+        document.querySelectorAll('input[name="filtro-preco"]')[0].checked = true; // Volta para "Todos"
+        
+        // Fecha as sanfonas visualmente (Opcional)
+        document.querySelectorAll('.filtro-conteudo').forEach(div => div.classList.remove('ativo'));
+        document.querySelectorAll('.grupo-filtro h3 i').forEach(icon => {
+            icon.classList.remove('fa-minus');
+            icon.classList.add('fa-plus');
+        });
+
+        renderizarProdutos(produtos);
+    }
+
+    // Inicializa
+    renderizarProdutos(produtos);
+
+    </script>
+
+</body>
+</html>
