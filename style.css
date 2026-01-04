@@ -614,33 +614,94 @@ footer {
     gap: 8px;
 }
 
-/* ==========================================
-   CORREÇÃO DE LAYOUT NO CELULAR
-   ========================================== */
+/* =======================================================
+   RESPONSIVIDADE (Correções para Celular/Tablet)
+   Isso só funciona quando a tela tem menos de 768px
+   ======================================================= */
 @media (max-width: 768px) {
 
-    /* 1. MUDAR A DIREÇÃO DO LAYOUT */
-    .loja-layout {
-        /* Muda de "lado a lado" (row) para "empilhado" (column) */
-        flex-direction: column !important; 
-        align-items: stretch; /* Garante que ocupem a largura toda */
-        gap: 20px; /* Espaço entre o filtro e os produtos */
+    /* --- 1. HEADER (Cabeçalho) --- */
+    .header-content {
+        flex-direction: column; /* Empilha Logo, Menu e Busca */
+        gap: 15px; /* Espaço entre eles */
+        text-align: center;
     }
 
-    /* 2. O FILTRO (SIDEBAR) */
-    .sidebar-filtros {
-        width: 100% !important; /* Ocupa a tela toda na largura */
-        margin-bottom: 20px;    /* Empurra os produtos para baixo */
-        border: 1px solid #eee; /* Borda leve para separar visualmente */
+    /* Ajuste do Logo no celular */
+    .logo h1 {
+        font-size: 22px; /* Diminui um pouco a logo */
     }
 
-    /* 3. OS PRODUTOS */
-    .grade-produtos {
-        width: 100% !important;
+    /* Menu de Navegação */
+    nav ul {
+        justify-content: center; /* Centraliza os links */
+        flex-wrap: wrap; /* Se não couber na linha, quebra para a próxima */
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    /* Área da Busca e Carrinho */
+    .acoes-usuario {
+        width: 100%; /* Ocupa a largura total */
+        justify-content: center; /* Centraliza */
+        margin-top: 5px;
+    }
+
+    .barra-busca {
+        width: 70%; /* Aumenta a barra de busca no celular */
+    }
+
+    /* --- 2. BARRA DE TOPO (Rosa) --- */
+    .top-bar .container {
+        flex-direction: column; /* Um embaixo do outro */
+        gap: 8px;
+        padding: 5px 0;
     }
     
-    /* Ajuste extra: Centralizar o cartão do produto se estiver sobrando espaço */
-    .produto-card {
-        margin: 0 auto;
+    .infos-contato, .redes-sociais {
+        justify-content: center; /* Centraliza tudo */
+        font-size: 11px; /* Letra um pouco menor */
+    }
+
+    /* --- 3. PÁGINA SOBRE NÓS --- */
+    /* Força o layout a ficar em coluna (Texto em cima, Foto embaixo) */
+    .sobre-layout-flex {
+        flex-direction: column;
+        padding: 30px 15px; /* Menos espaçamento nas bordas */
+        gap: 40px;
+    }
+
+    .frase-principal {
+        font-size: 24px; /* Reduz drasticamente o título gigante */
+        text-align: center;
+    }
+
+    .texto-informacoes {
+        font-size: 16px; /* Texto de leitura confortável */
+        text-align: center; /* Centraliza para ficar bonito no celular */
+        padding: 0 10px;
+    }
+
+    /* Ajuste do Carrossel no celular */
+    .coluna-carrossel-direita {
+        width: 100%; /* Usa a largura da tela */
+        max-width: 320px; /* Mas não deixa ficar gigante demais */
+        height: 450px; /* Altura proporcional */
+        margin: 0 auto; /* Centraliza */
+    }
+
+    /* Foto da Artesã */
+    .banner-artesa {
+        margin: 0 15px 30px 15px; /* Dá uma margem nas laterais para não grudar na borda */
+    }
+    
+    .texto-artesa-conteudo h2 {
+        font-size: 22px;
+        padding: 0 15px;
+    }
+    
+    .texto-artesa-conteudo p {
+        padding: 0 15px;
+        font-size: 16px;
     }
 }
