@@ -820,4 +820,29 @@ footer {
         font-size: 14px;
         margin-bottom: 5px;
     }
+
+    /* 1. Desativa o efeito de "passar o mouse" no celular */
+    .menu-item-dropdown:hover .dropdown-conteudo {
+        display: none; 
+    }
+
+    /* 2. Configura o menu para ficar FECHADO por padrão */
+    .dropdown-conteudo {
+        display: none; /* ESCONDIDO! */
+        position: static; /* Encaixa na lista normal */
+        width: 100%;
+        box-shadow: none;
+        border-top: none;
+        padding: 10px 0 10px 20px;
+        background-color: #f9f9f9;
+        flex-direction: column;
+        gap: 15px;
+        border-left: 3px solid var(--cor-principal);
+    }
+
+    /* 3. A classe mágica que o JavaScript vai adicionar */
+    .dropdown-conteudo.mostrar {
+        display: flex !important; /* QUANDO TIVER ESSA CLASSE, ELE APARECE */
+    }
 }
+
