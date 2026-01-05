@@ -226,10 +226,24 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+
+        // FUNÇÃO: SÓ ABRE O MENU SE FOR CELULAR
+    function toggleMenuMobile(event) {
+        // Verifica se a largura da tela é de celular/tablet (768px ou menos)
+        if (window.innerWidth <= 768) {
+            event.preventDefault(); // Evita que a página recarregue ou pule
+            
+            const submenu = document.getElementById('submenu-colecoes');
+            
+            // Liga ou Desliga a classe 'mostrar'
+            submenu.classList.toggle('mostrar');
+            }
+        }
     </script>
 </body>
 
 </html>
+
 
 
 
