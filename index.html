@@ -199,7 +199,11 @@
     // 1. BANCO DE DADOS
     const produtos = [
         { id: 1, nome: "Jogo Americano terracota", categoria: "Mesa Posta", preco: 16.30, imagem: "imagens/terracota.jpg", link: "https://ilmamoda.lojavirtualnuvem.com.br/produtos/jogo-americano-terracota/" },
-        { id: 2, nome: "Pano de Prato personalizado", categoria: "Panos de Prato", preco: 35.00, imagem: "imagens/panodeprato.jpg" },
+        { id: 2, nome: "Pano de Prato Estampado – Limões Sicilianos", categoria: "Panos de Prato", preco: 24.00, imagem: "imagens/Limão.jpg", link: "https://ilmamoda.lojavirtualnuvem.com.br/produtos/pano-de-prato-estampado-limoes-sicilianos/" },
+        { id: 3, nome: "Kit com 3 Panos de Prato Estampados – Legumes e Verduras", categoria: "Panos de Prato", preco: 68.00, imagem: "imagens/kit1.jpg", link: "https://ilmamoda.lojavirtualnuvem.com.br/produtos/kit-com-3-panos-de-prato-estampados-legumes-e-verduras/" },
+        { id: 4, nome: "Pano de Prato Estampado – Coleção Hortifruti (Bananas)", categoria: "Panos de Prato", preco: 24.00, imagem: "imagens/banana.jpg", link: "https://ilmamoda.lojavirtualnuvem.com.br/produtos/pano-de-prato-estampado-colecao-hortifruti-bananas/" },
+        { id: 5, nome: "Pano de Prato Estampado - Coleção Mesa Azul", categoria: "Panos de Prato", preco: 24.00, imagem: "imagens/Azul1.jpg", link: "https://ilmamoda.lojavirtualnuvem.com.br/produtos/pano-de-prato-estampado-colecao-mesa-azul/" },
+        
     ];
 
     // 2. FUNÇÃO VISUAL: ABRE E FECHA O MENU (Sanfona)
@@ -262,7 +266,7 @@
         // C. Filtro de Preço (Radio Buttons)
         const filtroPreco = document.querySelector('input[name="filtro-preco"]:checked').value;
 
-        // FILTRANDO...
+        // FILTRO
         let listaFiltrada = produtos.filter(produto => {
             const matchNome = produto.nome.toLowerCase().includes(termoBusca);
             const matchCategoria = categoriasSelecionadas.length === 0 || categoriasSelecionadas.includes(produto.categoria);
@@ -274,7 +278,7 @@
             return matchNome && matchCategoria && matchPreco;
         });
 
-        // ORDENANDO...
+        // ORDENAÇÂO
         if (ordenacao === 'menor-preco') {
             listaFiltrada.sort((a, b) => a.preco - b.preco);
         } else if (ordenacao === 'maior-preco') {
@@ -288,7 +292,7 @@
         renderizarProdutos(listaFiltrada);
     }
 
-    // 5. LIMPAR TUDO
+    // 5. BOTÂO LIMPAR TUDO
     function limparFiltros() {
         document.getElementById('busca-topo').value = ''; // Limpa topo
         document.getElementById('select-ordenacao').value = 'padrao'; // Reseta ordem
@@ -306,7 +310,7 @@
         renderizarProdutos(produtos);
     }
 
-    // Inicializa
+    // Inicialização
     renderizarProdutos(produtos);
 
     </script>
@@ -314,6 +318,7 @@
 </body>
 
 </html>
+
 
 
 
