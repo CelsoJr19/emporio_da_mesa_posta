@@ -800,36 +800,15 @@ footer {
 
     /* --- AJUSTE DO DROPDOWN NO CELULAR --- */
     
+    /* 1. Esconde o menu mesmo se tocar/passar mouse */
     .menu-item-dropdown:hover .dropdown-conteudo {
-        display: none; /* Desativa o efeito de mouse no celular */
+        display: none !important; /* O !important atropela a regra do PC */
     }
 
+    /* 2. Configuração do menu FECHADO */
     .dropdown-conteudo {
-        position: static; /* Tira o posicionamento flutuante */
-        display: block !important; /* Mostra sempre */
-        box-shadow: none;
-        border-top: none;
-        padding: 10px 0 10px 20px; /* Recuo para parecer sub-menu */
-        min-width: 100%;
-        background-color: #f9f9f9; /* Fundo levemente diferente */
-        flex-direction: column; /* Colunas viram linhas no celular */
-        gap: 15px;
-    }
-
-    .dropdown-coluna h3 {
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-
-    /* 1. Desativa o efeito de "passar o mouse" no celular */
-    .menu-item-dropdown:hover .dropdown-conteudo {
-        display: none; 
-    }
-
-    /* 2. Configura o menu para ficar FECHADO por padrão */
-    .dropdown-conteudo {
-        display: none; /* ESCONDIDO! */
-        position: static; /* Encaixa na lista normal */
+        display: none !important; /* Garante que comece invisível */
+        position: static;
         width: 100%;
         box-shadow: none;
         border-top: none;
@@ -840,9 +819,15 @@ footer {
         border-left: 3px solid var(--cor-principal);
     }
 
-    /* 3. A classe mágica que o JavaScript vai adicionar */
+    /* 3. A única regra que pode abrir o menu (via Clique/JS) */
     .dropdown-conteudo.mostrar {
-        display: flex !important; /* QUANDO TIVER ESSA CLASSE, ELE APARECE */
+        display: flex !important; /* Aqui mandamos aparecer */
+    }
+    
+    /* 4. Garante que, se estiver aberto (.mostrar), o hover não atrapalhe */
+    .menu-item-dropdown:hover .dropdown-conteudo.mostrar {
+        display: flex !important;
     }
 }
+
 
