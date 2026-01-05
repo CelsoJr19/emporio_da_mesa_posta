@@ -612,11 +612,77 @@ footer {
     display: flex;
     align-items: center;
     gap: 8px;
+
 }
+
+/* --- MENU DROPDOWN (COLEÇÕES) --- */
+
+/* 1. O Item do Menu Pai */
+.menu-item-dropdown {
+    position: relative; /* Importante para segurar o menu filho */
+    height: 100%;
+}
+
+/* 2. A Caixa do Menu (Começa invisível) */
+.dropdown-conteudo {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%; /* Cola logo abaixo do texto "Coleções" */
+    left: -50px; /* Ajuste para centralizar um pouco */
+    background-color: white;
+    min-width: 400px; /* Largura da caixa */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Sombra chique */
+    z-index: 1000; /* Garante que fique em cima de tudo */
+    padding: 20px;
+    border-top: 3px solid var(--cor-principal); /* Detalhe rosa no topo */
+    border-radius: 0 0 8px 8px;
+    
+    /* Layout das colunas (Mesa Posta | Panos) */
+    display: none; /* Reforçando que começa invisível */
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* 3. A Mágica: Mostrar quando passa o mouse */
+.menu-item-dropdown:hover .dropdown-conteudo {
+    display: flex; /* Vira Flexbox para ficar lado a lado */
+}
+
+/* 4. Estilo das Colunas */
+.dropdown-coluna {
+    flex: 1; /* Divide o espaço igual */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.dropdown-coluna h3 {
+    color: var(--cor-principal);
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.dropdown-coluna a {
+    color: #666;
+    padding: 5px 0;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.2s;
+    display: block; /* Garante que fique um embaixo do outro */
+}
+
+.dropdown-coluna a:hover {
+    color: var(--cor-principal);
+    padding-left: 5px; /* Efeitinho de mover */
+}
+
 
 /* =======================================================
    RESPONSIVIDADE (Correções para Celular/Tablet)
-   Isso só funciona quando a tela tem menos de 768px
+   Só funciona quando a tela tem menos de 768px
    ======================================================= */
 @media (max-width: 768px) {
 
@@ -730,5 +796,28 @@ footer {
     .texto-artesa-conteudo p {
         padding: 0 15px;
         font-size: 16px;
+    }
+
+    /* --- AJUSTE DO DROPDOWN NO CELULAR --- */
+    
+    .menu-item-dropdown:hover .dropdown-conteudo {
+        display: none; /* Desativa o efeito de mouse no celular */
+    }
+
+    .dropdown-conteudo {
+        position: static; /* Tira o posicionamento flutuante */
+        display: block !important; /* Mostra sempre */
+        box-shadow: none;
+        border-top: none;
+        padding: 10px 0 10px 20px; /* Recuo para parecer sub-menu */
+        min-width: 100%;
+        background-color: #f9f9f9; /* Fundo levemente diferente */
+        flex-direction: column; /* Colunas viram linhas no celular */
+        gap: 15px;
+    }
+
+    .dropdown-coluna h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
     }
 }
