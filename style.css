@@ -800,14 +800,14 @@ footer {
 
     /* --- AJUSTE DO DROPDOWN NO CELULAR --- */
     
-    /* 1. Esconde o menu mesmo se tocar/passar mouse */
+    /* 1. Garante que o menu comece e continue fechado mesmo tocando */
     .menu-item-dropdown:hover .dropdown-conteudo {
-        display: none !important; /* O !important atropela a regra do PC */
+        display: none !important;
     }
 
-    /* 2. Configuração do menu FECHADO */
+    /* 2. Configuração visual do menu mobile */
     .dropdown-conteudo {
-        display: none !important; /* Garante que comece invisível */
+        display: none !important; /* Escondido por padrão */
         position: static;
         width: 100%;
         box-shadow: none;
@@ -818,16 +818,18 @@ footer {
         gap: 15px;
         border-left: 3px solid var(--cor-principal);
     }
-
-    /* 3. A única regra que pode abrir o menu (via Clique/JS) */
-    .dropdown-conteudo.mostrar {
-        display: flex !important; /* Aqui mandamos aparecer */
+    
+    /* Ao adicionar .menu-item-dropdown antes, tornamos essa regra a mais forte de todas */
+    .menu-item-dropdown .dropdown-conteudo.mostrar {
+        display: flex !important; 
+        animation: abrirSuave 0.3s ease; /* Um charminho extra */
     }
     
-    /* 4. Garante que, se estiver aberto (.mostrar), o hover não atrapalhe */
-    .menu-item-dropdown:hover .dropdown-conteudo.mostrar {
-        display: flex !important;
+    @keyframes abrirSuave {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 }
+
 
 
